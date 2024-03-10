@@ -27,9 +27,9 @@ function renderTasks() {
         }
     });
 
-    todoCount.innerText = ${countTasks('todo')};
-    inProgressCount.innerText = ${countTasks('in-progress')};
-    doneCount.innerText = ${countTasks('done')};
+    todoCount.innerText = `${countTasks('todo')}`;
+    inProgressCount.innerText = `${countTasks('in-progress')}`;
+    doneCount.innerText = `${countTasks('done')}`;
 }
 
 function createTaskElement(task) {
@@ -109,7 +109,7 @@ function drop(event) {
 // }
 
 function toggleMenu(category) {
-    const menu = document.getElementById(${category}-menu);
+    const menu = document.getElementById(`${category}-menu`);
     const isOpen = menu.classList.contains('show');
     closeAllMenus(); // Close all other open menus
     if (!isOpen) {
@@ -135,7 +135,7 @@ document.body.addEventListener('click', function (event) {
 
 
 function removeAllTasks(category) {
-    const confirmation = confirm(Are you sure you want to remove all tasks in the ${category} category?);
+    const confirmation = confirm(`Are you sure you want to remove all tasks in the ${category} category?`);
     if (confirmation) {
         tasks = tasks.filter(task => task.status !== category);
         localStorage.setItem('tasks', JSON.stringify(tasks));
