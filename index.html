@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="board">
+        <div class="column" id="todo">
+            <h3>
+                <div>
+                    <span class="heading" style="background-color: #FFCCD1;">Not Started</span>
+                    &nbsp;<span id="todo-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('todo')">&#8285;</span>
+                    <div class="menu-content" id="todo-menu">
+                        <a href="#" onclick="removeAllTasks('todo')">Remove All Tasks</a>
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="todo-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('todo')">+ New</button>
+        </div>
+        <div class="column" id="in-progress">
+            <h3>
+                <div>
+                    <span class="heading" style="background-color: #FBEECC;">In Progress</span>&nbsp; <span
+                        id="in-progress-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('in-progress')">&#8285;</span>
+                    <div class="menu-content" id="in-progress-menu">
+                        <a href="#" onclick="removeAllTasks('in-progress')">Remove All Tasks</a>
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="in-progress-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('in-progress')">+ New</button>
+        </div>
+        <div class="column" id="done">
+            <h3>
+                <div>
+                    <span class="heading" style="background-color: #CCE7E1;">Completed</span>&nbsp; <span
+                        id="done-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('done')">&#8285;</span>
+                    <div class="menu-content" id="done-menu">
+                        <a href="#" onclick="removeAllTasks('done')">Remove All Tasks</a>
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="done-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('done')">+ New</button>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add a new Task</h2>
+            <div class="inputtask">
+                <input type="text" id="task-title" placeholder="Task Title"><br>
+                <select id="task-status">
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select><br>
+                <textarea id="task-description" placeholder="Task Description"></textarea><br>
+                <button class="btn" onclick="saveTask()">Save</button>
+                <button class="btn" onclick="deleteTask()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
